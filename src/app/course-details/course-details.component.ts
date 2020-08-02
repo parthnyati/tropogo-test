@@ -9,6 +9,11 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 export class CourseDetailsComponent implements OnInit {
 
   constructor() { }
+  courseNameError : boolean = false;
+  showErrorAlert : boolean = false;
+  showSuccessAlert : boolean = false;
+
+  courseName;
   selectedItems;
   selectedAircraft
   model : NgbDateStruct
@@ -100,4 +105,11 @@ export class CourseDetailsComponent implements OnInit {
     }
   }
 
+  onClickSave(){
+
+  }
+
+  back(){
+    
+  }
 }

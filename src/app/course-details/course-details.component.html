@@ -18,7 +18,7 @@
             <dx-text-box placeholder="Enter Name" [isValid]='!courseNameError' [(value)]="courseName" [showClearButton]="true">
             </dx-text-box>
         </div>
-        <div *ngIf="iNameError" class="hasErrorText">
+        <div *ngIf="courseNameError" class="hasErrorText">
             Please provide course name.
         </div>
 
@@ -34,7 +34,7 @@
                     layout="horizontal">
             </dx-radio-group>
         </div>
-        <div *ngIf="iNameError" class="hasErrorText">
+        <div *ngIf="courseNameError" class="hasErrorText">
             Please select aircraft type.
         </div>
 
@@ -233,7 +233,8 @@
         </div>
     </div>
     <div class="navButtons">
-        <button type="button" class="btn btn-success btnPadding" (click)="onClickNext()">Save & Publish</button>
+        <button type="button" class="btn btn-success btnPadding" (click)="back()">Back</button>
+        <button type="button" class="btn btn-success btnPadding" (click)="onClickSave()">Save & Publish</button>
     </div>
     <div class="formAlert" *ngIf="showErrorAlert">
         <ngb-alert  type="danger" (close)="closeAlert()">Please fill the required information to proceed.
