@@ -5,7 +5,7 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { InstituteDetailsComponent } from './institute-details/institute-details.component';
 
 const routes: Routes = [
-  {path : '', redirectTo : 'instituteonboarding', pathMatch : 'full'},
+  {path : '', redirectTo : 'instituteonboarding/institutedetails', pathMatch : 'full'},
   {
     path : 'instituteonboarding', 
     component : InstituteOnboardingComponent,
@@ -14,7 +14,7 @@ const routes: Routes = [
       {path : 'institutedetails', component : InstituteDetailsComponent}
     ]
   },
-  {path : '**', redirectTo : 'instituteonboarding', pathMatch :'full' }
+  {path : '**', redirectTo : 'instituteonboarding/institutedetails', pathMatch :'full' }
 ];
 
 @NgModule({

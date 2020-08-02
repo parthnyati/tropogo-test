@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-details',
@@ -8,10 +9,14 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 })
 export class CourseDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router : Router
+  ) { }
   courseNameError : boolean = false;
   showErrorAlert : boolean = false;
   showSuccessAlert : boolean = false;
+  batchError : boolean = false
+  aircraftError : boolean = false;
 
   courseName;
   selectedItems;
@@ -53,7 +58,8 @@ export class CourseDetailsComponent implements OnInit {
       'courseLanguages' : [],
       'courseCost': undefined,
       'expand': false,
-      'courseNum': 1
+      'courseNum': 1,
+      'hasError': false,
     }
   ]
 
@@ -81,7 +87,8 @@ export class CourseDetailsComponent implements OnInit {
       'courseLanguages' : [],
       'courseCost': undefined,
       'expand': false,
-      'courseNum' : numOfBatches + 1
+      'courseNum' : numOfBatches + 1,
+      'hasError': false,
     }
 
     this.courseList.push(temp);
@@ -96,7 +103,8 @@ export class CourseDetailsComponent implements OnInit {
       this.courseList[num].endDate = undefined;
       this.courseList[num].courseLocation = undefined;
       this.courseList[num].courseLanguages = [];
-      this.courseList[num].courseLanguages = undefined;
+      this.courseList[num].courseCost = undefined;
+      this.courseList[num].hasError = false;
     }else{
       if(this.courseList.length === 1){
         this.atleastOneCourse = true;
@@ -105,11 +113,54 @@ export class CourseDetailsComponent implements OnInit {
     }
   }
 
-  onClickSave(){
+  onClickSave(){ 
+    for (let obj of this.courseList){
+      if(obj){
+        if(obj.startDate && obj.endDate && obj.courseLocation && obj.courseCost && obj.courseLanguages.length!==0){
+          obj.hasError = false
+          console.log("false")
+        }else{
+          this.batchError = true
+          obj.hasError = true;
+          console.log(this.courseList)
+        }
+      }
+    }
 
+    if(this.selectedAircraft){
+      this.aircraftError = false
+    }else{
+      this.aircraftError = true;
+    }
+
+    if(this.courseName){
+      this.courseNameError = false
+    }else{
+      this.courseNameError = true;
+    }
+
+    if( this.courseNameError || this.aircraftError || this.batchError){
+      this.showErrorAlert = true;
+      this.showSuccessAlert = false;
+    }else{
+      this.showSuccessAlert = true
+      this.showErrorAlert = false;
+    this.disapperAlert();
+    }
+  }
+
+  disapperAlert(){
+    setTimeout(() => {
+        this.closeAlert();
+    }, 2500);
+  }
+
+  closeAlert(){
+    this.showErrorAlert = false;
+    this.showSuccessAlert = false
   }
 
   back(){
-    
+    this.router.navigateByUrl("instituteonboarding/institutedetails");
   }
 }

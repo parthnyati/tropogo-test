@@ -10,21 +10,25 @@
         </div>
 
         <div class="row " [ngClass]="courseNameError ? 'textFieldLabelError':'textFieldLabel' ">
-            <div class="col-8 noPadding" >
+            <div class="col-4 noPadding" >
                 Course Name
+            </div>
+            <div *ngIf="courseNameError" class="errorText col">
+                Please provide course name.
             </div>
         </div>
         <div class="textField">
             <dx-text-box placeholder="Enter Name" [isValid]='!courseNameError' [(value)]="courseName" [showClearButton]="true">
             </dx-text-box>
         </div>
-        <div *ngIf="courseNameError" class="hasErrorText">
-            Please provide course name.
-        </div>
+        
 
-        <div class="row " [ngClass]="courseNameError ? 'textFieldLabelError':'textFieldLabel' ">
-            <div class="col-8 noPadding" >
+        <div class="row " [ngClass]="aircraftError ? 'textFieldLabelError':'textFieldLabel' ">
+            <div class="col-6 noPadding" >
                 Aircraft Type
+            </div>
+            <div *ngIf="aircraftError" class="errorText col">
+                Please select aircraft type.
             </div>
         </div>
         <div class="textField">
@@ -34,9 +38,7 @@
                     layout="horizontal">
             </dx-radio-group>
         </div>
-        <div *ngIf="courseNameError" class="hasErrorText">
-            Please select aircraft type.
-        </div>
+        
 
         <div class="row textFieldLabel">
             <div class="col-2 noPadding ">
@@ -48,11 +50,14 @@
             <div class="col-4 noPadding">
                 End Date
             </div>
+            <div *ngIf="batchError" class="col-2 errorText noPadding">
+                Incomplete Details
+            </div>
         </div>
         <div class="batchRowContainer">
             <div *ngFor="let obj of courseList; let i = index" class="batchRow">
                 <div class="row ">
-                    <div class="col-2 slightPadding textOverflow batchName">
+                    <div class="col-2 slightPadding textOverflow" [ngClass]="obj.hasError ? 'batchNameError' : 'batchName'" >
                         Batch {{obj.courseNum}} 
                     </div>
                     <div class="col-4 slightPadding">
@@ -64,7 +69,7 @@
                             </div>
                           </div> -->
                         <dx-date-box
-                            [value]="obj.startDate"
+                            [(value)]="obj.startDate"
                             placeholder="DD MMM"
                             displayFormat="dd MMM"
                             adaptivityEnabled="true"
@@ -73,7 +78,7 @@
                     </div>
                     <div class="col-4 slightPadding">
                         <dx-date-box
-                            [value]="obj.endDate"
+                            [(value)]="obj.endDate"
                             placeholder="DD MMM"
                             displayFormat="dd MMM"
                             adaptivityEnabled="true"
@@ -133,7 +138,7 @@
                         <div class="textFieldLabel textOverflow">
                             Course Cost (GST ext)
                         </div>
-                        <dx-text-box [(value)]="courseName" [showClearButton]="true">
+                        <dx-text-box [(value)]="obj.courseCost" [showClearButton]="true">
                         </dx-text-box>
                     </div>
                 </div>
@@ -233,7 +238,7 @@
         </div>
     </div>
     <div class="navButtons">
-        <button type="button" class="btn btn-success btnPadding" (click)="back()">Back</button>
+        <button type="button" id="backButton" class="btn btn-success btnPadding" (click)="back()">Back</button>
         <button type="button" class="btn btn-success btnPadding" (click)="onClickSave()">Save & Publish</button>
     </div>
     <div class="formAlert" *ngIf="showErrorAlert">

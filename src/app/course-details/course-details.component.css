@@ -39,6 +39,12 @@
     margin: auto 0;
 }
 
+.batchNameError{
+    font-size: 13px;
+    margin: auto 0;
+    color: var(--danger);
+}
+
 .batchRow{
     border-bottom: 1px solid #dee2e6;
     padding-top: 0.5rem;
@@ -86,4 +92,18 @@
 
 ::ng-deep .dx-dropdownbutton-popup-wrapper.dx-popup-wrapper .dx-overlay-content{
     min-width: 64px!important;
+}
+
+#backButton{
+    float: left;
+    margin-left: 1rem;
+    color: #28a745;
+    background: transparent
+}
+
+.errorText{
+    font-size: 10px;
+    font-family: sans-serif;
+    color: var(--danger);
+    text-align: right;
 }
