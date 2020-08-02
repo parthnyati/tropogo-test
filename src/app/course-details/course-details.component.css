@@ -1,0 +1,89 @@
+.border{
+    border-bottom: 1px solid #dedede;
+}
+
+.subHeading{
+    margin-top: 0.5rem;
+    font-family: Manrope-ExtraBold;
+    font-size: 16px;
+}
+
+:host ::ng-deep .dx-radiobutton{
+    font-family: Manrope-Regular;
+    font-size: 12px;
+}
+
+:host ::ng-deep .dx-datebox-calendar .dx-dropdowneditor-icon:before{
+    color: green;
+}
+
+::ng-deep .dx-popup-content{
+    padding: 0;
+}
+
+.marginBottom1rem{
+    margin-bottom: 1rem;
+}
+/* ::ng-deep .dx-datebox.dx-auto-width .dx-texteditor-input, .dx-datebox:not(.dx-texteditor-empty).dx-auto-width .dx-texteditor-input{
+    font-size: 12px;
+    max-width: 81px;
+    padding-right: 0px ;
+} */
+
+.slightPadding{
+    padding: 0 0.1rem;
+}
+
+.batchName{
+    font-size: 13px;
+    margin: auto 0;
+}
+
+.batchRow{
+    border-bottom: 1px solid #dee2e6;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.batchRowContainer{
+    background: #F8F8FA;
+}
+
+.marginTop1rem{
+    margin-top: 1rem;
+}
+
+#addCourseIcon{
+    height: 24px;
+    cursor: pointer;
+}
+
+#addCourseText{
+    padding-top: 7px;
+    margin-left: 0.3rem;
+    font-size: 12px;
+    font-family: Manrope-ExtraBold;
+    color: var(--teal);
+    cursor: pointer;
+}
+
+#addCourseDiv{
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+::ng-deep .dx-button-has-icon .dx-icon.dx-icon-right{
+    display: none;
+}
+
+::ng-deep .dx-dropdownbutton-action.dx-buttongroup-last-item.dx-button .dx-button-content{
+    padding: 0;
+}
+
+::ng-deep .dx-button-mode-outlined.dx-buttongroup-last-item.dx-button{
+    border: none;
+}
+
+::ng-deep .dx-dropdownbutton-popup-wrapper.dx-popup-wrapper .dx-overlay-content{
+    min-width: 64px!important;
+}

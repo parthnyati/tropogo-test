@@ -1,1 +1,164 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~devextreme/dist/css/dx.common.css";
+@import "~devextreme/dist/css/dx.light.css";
+
+
+.flexDisplay{
+    display: flex;
+}
+
+body { 
+    background: #eeeff5;
+}
+
+.whiteBackground{
+    background: white;
+}
+
+.margin0{
+    margin: 0;
+}
+
+.noPadding{
+    padding: 0;
+}
+
+.textOverflow{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+}
+
+.row{
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+
+}
+
+.padding1rem{
+    padding: 1rem;
+}
+
+.fieldLabel{
+   font-size: 12px;
+   font-family: Manrope-ExtraBold;
+   height: 38px;
+}
+
+.formContainer{
+   height: 24rem;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   padding: 3px;
+}
+
+.marginTop1rem{
+    margin-top: 1rem;
+}
+
+.padding01rem{
+    padding: 0 1rem;
+}
+
+.trashIconContainer{
+    cursor: pointer;
+    height: 14px;
+}
+
+.navButtons{
+    text-align: right;
+    box-shadow: 0px -2px 4px #dedede;
+    z-index: 1;
+    margin-left: -3rem;
+    margin-right: -3rem;
+    padding-top: 0.5rem;
+    padding-right: 2rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid #dedede;
+}
+
+.textRight{
+    text-align: right;
+}
+
+.formAlert{
+   position: absolute;
+   bottom: 28px;
+   width: 91%;
+   z-index: 2;
+}
+
+.textFieldLabel{
+    font-size: 12px;
+    font-family: Manrope-ExtraBold;
+    margin-top: 1rem;
+}
+
+.mainContainer{
+    padding: 1rem 2rem;
+    background: white;
+    padding-bottom: 0;
+}
+
+.textField{
+    margin-top: 0.5rem;
+    padding: 0;
+}
+
+.hasErrorText{
+    position: sticky;
+    font-size: 10px;
+    float:right;
+    color: var(--danger);
+}
+
+.padding02rem{
+    padding: 0 2rem;
+}
+
+
+.btnPadding{
+    padding: 0.25rem 2rem;
+}
+
+.font14{
+    font-size: 14;
+}
+
+.textFieldLabelError{
+    font-size: 12px;
+    font-family: Manrope-ExtraBold;
+    margin-top: 1rem;
+    color: var(--danger);
+}
+
+
+
+
+@font-face {
+    font-family: Manrope-ExtraBold;
+    src: url('./assets/fonts/manrope-bold.otf') format("opentype");
+}@font-face {
+    font-family: Manrope-Light;
+    src: url('./assets/fonts/manrope-light.otf') format("opentype");
+}@font-face {
+    font-family: Manrope-Medium;
+    src: url('./assets/fonts/manrope-medium.otf') format("opentype");
+}@font-face {
+    font-family: Manrope-Regular;
+    src: url('./assets/fonts/manrope-regular.otf') format("opentype");
+}@font-face {
+    font-family: Manrope-SemiBold;
+    src: url('./assets/fonts/manrope-semibold.otf') format("opentype");
+}@font-face {
+    font-family: Manrope-thin;
+    src: url('./assets/fonts/manrope-thin.otf') format("opentype");
+}

@@ -1,0 +1,8 @@
+#mainRow{
+    height: -webkit-fill-available;
+}
+
+.imageContainer{
+    height: 512px;
+    overflow: hidden;
+}

@@ -1,0 +1,246 @@
+<div class="mainContainer">
+    <h3 >
+        Add course details
+    </h3>
+    <div class="border">
+    </div>
+    <div class="formContainer">
+        <div class="subHeading">
+            COURSE 1
+        </div>
+
+        <div class="row " [ngClass]="courseNameError ? 'textFieldLabelError':'textFieldLabel' ">
+            <div class="col-8 noPadding" >
+                Course Name
+            </div>
+        </div>
+        <div class="textField">
+            <dx-text-box placeholder="Enter Name" [isValid]='!courseNameError' [(value)]="courseName" [showClearButton]="true">
+            </dx-text-box>
+        </div>
+        <div *ngIf="iNameError" class="hasErrorText">
+            Please provide course name.
+        </div>
+
+        <div class="row " [ngClass]="courseNameError ? 'textFieldLabelError':'textFieldLabel' ">
+            <div class="col-8 noPadding" >
+                Aircraft Type
+            </div>
+        </div>
+        <div class="textField">
+            <dx-radio-group
+                    [items]="aircraftList"
+                    [(value)]="selectedAircraft"
+                    layout="horizontal">
+            </dx-radio-group>
+        </div>
+        <div *ngIf="iNameError" class="hasErrorText">
+            Please select aircraft type.
+        </div>
+
+        <div class="row textFieldLabel">
+            <div class="col-2 noPadding ">
+                Batch
+            </div>
+            <div class="col-4 noPadding">
+                Start Date
+            </div>
+            <div class="col-4 noPadding">
+                End Date
+            </div>
+        </div>
+        <div class="batchRowContainer">
+            <div *ngFor="let obj of courseList; let i = index" class="batchRow">
+                <div class="row ">
+                    <div class="col-2 slightPadding textOverflow batchName">
+                        Batch {{obj.courseNum}} 
+                    </div>
+                    <div class="col-4 slightPadding">
+                        <!-- <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd"
+                                   name="dp"  ngbDatepicker #d="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                            </div>
+                          </div> -->
+                        <dx-date-box
+                            [value]="obj.startDate"
+                            placeholder="DD MMM"
+                            displayFormat="dd MMM"
+                            adaptivityEnabled="true"
+                            type="date">
+                        </dx-date-box>
+                    </div>
+                    <div class="col-4 slightPadding">
+                        <dx-date-box
+                            [value]="obj.endDate"
+                            placeholder="DD MMM"
+                            displayFormat="dd MMM"
+                            adaptivityEnabled="true"
+                            type="date">
+                        </dx-date-box>
+                    </div>
+                    <div class="col-1 noPadding textRight">
+                        <!-- <i class="dx-icon-overflow" style="font-size: 16px; margin:0rem 0.3rem;"></i> -->
+                        <dx-drop-down-button
+                            icon="overflow"
+                            [items]="actionList"
+                            (onItemClick)="onActionClick($event, i)"
+                        ></dx-drop-down-button>
+                    </div>
+                    <div class="col-1 noPadding textRight">
+                        <i *ngIf="!obj.expand" class="dx-icon-chevrondown" (click)="expand(i)" style=" cursor: pointer ;font-size: 16px; margin:0rem 0.3rem; color: green;"></i>
+                        <i *ngIf="obj.expand" class="dx-icon-chevronup" (click)="collapse(i)" style=" cursor: pointer ;font-size: 16px; margin:0rem 0.3rem;color: green;"></i>
+                    </div>
+                </div>
+                <div *ngIf="obj.expand" class="row">
+                    <div class="col-2"></div>
+                    <div class="col-5 slightPadding">
+                        <div class="row" class="textFieldLabel">
+                            <div class="col slightPadding textOverflow" >
+                                Course Location
+                            </div>
+                        </div>
+                        <div class="textField">
+                            <dx-select-box [(value)]="obj.courseLocation" [items]="locationList"></dx-select-box>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="obj.expand" class="row">
+                    <div class="col-2"></div>
+                    <div class="col-5 slightPadding">
+                        <div class="textFieldLabel textOverflow" [title]="obj.courseLanguages">
+                            Course Languages
+                        </div>
+                        <dx-drop-down-box 
+                            placeholder="Select..."
+                            [(value)]="obj.courseLanguages"
+                            [items]="languageList"
+                            > 
+                            <div *dxTemplate="let data of 'content'">
+                                    <dx-list #list
+                                        style="margin:  0rem -0.75rem ;"
+                                        [items]="languageList"
+                                        searchEnabled = "true"
+                                        [selectionMode]="multiple"
+                                        [showSelectionControls]="true"
+                                        [(selectedItems)]="obj.courseLanguages">
+                                    </dx-list>
+                                </div>
+                        </dx-drop-down-box>
+                    </div>
+                    <div class="col-5 slightPadding ">
+                        <div class="textFieldLabel textOverflow">
+                            Course Cost (GST ext)
+                        </div>
+                        <dx-text-box [(value)]="courseName" [showClearButton]="true">
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="batchRow">
+                <div class="row ">
+                    <div class="col-2 slightPadding textOverflow batchName">
+                        Batch 1 
+                    </div>
+                    <div class="col-4 slightPadding">
+                        <dx-date-box
+                            [value]="now"
+                            placeholder="DD MMM"
+                            displayFormat="dd MMM"
+                            adaptivityEnabled="true"
+                            type="date">
+                        </dx-date-box>
+                    </div>
+                    <div class="col-4 slightPadding">
+                        <dx-date-box
+                            [value]="now"
+                            placeholder="DD MMM"
+                            displayFormat="dd MMM"
+                            adaptivityEnabled="true"
+                            type="date">
+                        </dx-date-box>
+                    </div>
+                    <div class="col-2 noPadding textRight">
+                        <i class="dx-icon-overflow" style="font-size: 16px; margin:0rem 0.3rem;"></i>
+                        <i class="dx-icon-chevrondown" style="font-size: 16px; margin:0rem 0.3rem;"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-5 slightPadding">
+                        <div class="row" class="textFieldLabel">
+                            <div class="col slightPadding" >
+                                Course Location
+                            </div>
+                        </div>
+                        <div class="textField">
+                            <dx-select-box [items]="locationList"></dx-select-box>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-5 slightPadding">
+                        <div class="textFieldLabel">
+                            Course Languages
+                        </div>
+                        <dx-drop-down-box 
+                            placeholder="Select..."
+                            [items]="languageList"
+                            > 
+                            <div *dxTemplate="let data of 'content'">
+                                    <dx-list #list
+                                        style="margin:  0rem -0.75rem ;"
+                                        [dataSource]="countryList"
+                                        searchEnabled = "true"
+                                        [selectionMode]="multiple"
+                                        [showSelectionControls]="true"
+                                        [(selectedItemKeys)]="userSelectedRow.countryAffected"
+                                        [(selectedItems)]="userSelectedRow.countryAffected">
+                                    </dx-list>
+                                </div>
+                        </dx-drop-down-box>
+                    </div>
+                    <div class="col-5 slightPadding">
+                        <div class="textFieldLabel">
+                            Course Cost (GST ext)
+                        </div>
+                        <dx-text-box [(value)]="courseName" [showClearButton]="true">
+                        </dx-text-box>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div id="addCourseDiv">
+            <div>
+                <img src="../../assets/plus-circle-solid.svg" id="addCourseIcon" (click)="addBatch()" alt=""> 
+            </div>
+            <div id="addCourseText" (click)="addBatch()">
+                Add Another Course Date
+            </div>
+        </div>
+        <div class="row textFieldLabel">
+            <div class="col noPadding ">
+                Course details
+            </div>
+        </div>
+        <div class="textField">
+            <dx-text-area
+                [height]="90"
+                [(value)]="courseDetails">
+            </dx-text-area>
+        </div>
+    </div>
+    <div class="navButtons">
+        <button type="button" class="btn btn-success btnPadding" (click)="onClickNext()">Save & Publish</button>
+    </div>
+    <div class="formAlert" *ngIf="showErrorAlert">
+        <ngb-alert  type="danger" (close)="closeAlert()">Please fill the required information to proceed.
+        </ngb-alert>
+    </div>
+    <div class="formAlert" *ngIf="showSuccessAlert">
+        <ngb-alert  type="success" (close)="closeAlert()">information uploaded successfully. 
+        </ngb-alert>
+    </div>
+</div>

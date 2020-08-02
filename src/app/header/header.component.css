@@ -1,0 +1,38 @@
+.brandtext{
+    font-size: 32px;
+    font-family: Manrope-Extrabold;
+}
+
+.brandBlue {
+    color : #155FE1;
+}
+
+.brandGreen {
+    color: #03C772;
+}
+
+.backgroundGreen {
+    background: #03C772;
+}
+.backgroundGray {
+    background: #EEEFF5 ;
+}
+
+.devider{
+    height: 12px;
+}
+
+#logo{
+    height: 32px;
+    margin-top: 7px;
+    margin-right: 7px;
+    height: 32px;
+}
+
+.logoRow{
+    height: 70px;
+}
+
+.brandColumn{
+    margin: auto 0;
+}

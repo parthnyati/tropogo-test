@@ -1,0 +1,101 @@
+#dataFilesText{
+    text-align: center;
+    font-family: 'ArialMT', 'Arial', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    padding-top: 8px;
+    color: #333333;
+}
+
+.inputButton{
+    position: absolute;
+    top: -5px;
+    text-align: center;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #147df6;
+    width: 100px;
+    cursor: pointer;
+}
+
+.inputButton2{
+    position: absolute;
+    top: 0.5rem;
+    text-align: center;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0.375rem 0.375rem;
+    font-weight: 400;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 0.25rem
+}
+
+.addButtonDiv{
+    padding:1rem 2rem;
+}
+
+ .impFile{
+    opacity: 0;
+    width: 100px;
+    height: 16px;
+ }
+
+ .padding1rem{
+     padding: 1rem;
+ }
+
+ .fieldRow {
+    box-shadow: 1px 3px 5px #dbdbdb;
+    padding-top: 20px;
+    border-radius: 3px;
+    border: 1px solid #03c772;
+ }
+
+ .fieldRowError {
+    box-shadow: 1px 3px 5px #dbdbdb;
+    padding-top: 20px;
+    border-radius: 3px;
+    border: 1px solid var(--danger);
+    color : var(--danger);
+ }
+
+ .fieldLabel{
+    font-size: 12px;
+    font-family: Manrope-ExtraBold;
+    height: 38px;
+ }
+
+ #previewImage { 
+    width: inherit;
+    height: inherit;
+    margin-top: 0.5rem;
+    border: 2px var(--gray) solid;
+    border-radius: 3px;
+ }
+
+ #importFile2{
+     opacity: 0;
+ }
+
+
+
+ .fileNameRow{
+    color: #7A7683;
+    border-bottom: 1px solid #EEEFF5;
+    padding: 0.5rem;
+    font-size: 12px;
+    padding-top: 0.5rem;
+    font-family: Manrope-Regular;
+ }
+
+
+.listContainer{
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+}
+

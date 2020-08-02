@@ -1,0 +1,129 @@
+<div class="mainContainer">
+    <h3 >
+        Add some details of your training institute
+    </h3>
+    <div class="formContainer">
+        <div class="row " [ngClass]="iNameError ? 'textFieldLabelError':'textFieldLabel' ">
+            <div class="col-8 noPadding" >
+                NAME OF INSTITUTE
+            </div>
+        </div>
+        <div class="textField">
+            <dx-text-box placeholder="Enter Name" [isValid]='!iNameError' [(value)]="instituteName" [showClearButton]="true">
+            </dx-text-box>
+        </div>
+        <div *ngIf="iNameError" class="hasErrorText">
+            Please provide institute name.
+        </div>
+        <div class="row marginTop1rem" [ngClass]="logoError ? 'fieldRowError':'fieldRow' ">
+            <div class="col-8 fieldLabel">
+                INSTITUTE LOGO
+            </div>
+            <div class="col">
+                <div>
+                    <input type="file"  formControlName="importFile" class="impFile" id="importFile" accept="image/*" (change)="onLogoChange($event)">
+                        <label class="inputButton" #labelImport for="importFile"><img src="../../assets/ic_upload.png"> Upload</label>
+                </div>     
+            </div>
+        </div>
+        <div *ngIf="logoError"class="hasErrorText">
+            Please provide institute logo.
+        </div>
+        <div *ngIf="url" class="row">
+            <div class="col-2"></div>
+            <div class="col-4">
+                <img *ngIf="url" id="previewImage" [src]="url" height="200">
+            </div>
+            <div class="col-4">
+                <div class="custom-file">
+                    <input type="file"  formControlName="importFile2" id="importFile2" accept="image/*" (change)="onLogoChange($event)">
+                        <label class="inputButton2" #labelImport for="importFile2"> Change</label>
+                </div> 
+            </div>
+        </div>
+        <div class="row fieldRow marginTop1rem">
+            <div class="col-8 fieldLabel">
+                INSTITUTE BROCHURE (optional)
+            </div>
+            <div class="col">
+                    <input type="file" multiple formControlName="importFile" class="impFile"  id="importBrochure" (change)="onBrochureChange($event)">
+                    <label class="inputButton" #labelImport for="importBrochure"><img src="../../assets/ic_upload.png"> Upload</label>
+            </div>
+        </div>
+        <div *ngIf="brochureList.length !== 0" class="listContainer">
+            <div *ngFor="let obj of brochureList">
+                <div class="row fileNameRow" >
+                    <div class="col-10 textOverflow">
+                        {{obj}}
+                    </div>
+                    <div class="col">
+                        <div>
+                            <img class="trashIconContainer" src="../../assets/trash-solid.svg" (click)="removeBrochure(obj)">
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="row fieldRow marginTop1rem">
+            <div class="col-8 fieldLabel">
+                CERTIFICATION (optional)
+            </div>
+            <div class="col">
+                <input type="file" multiple formControlName="importFile" class="impFile"  id="importCertifications" (change)="onCertificateChange($event)">
+                <label class="inputButton" #labelImport for="importCertifications"><img src="../../assets/ic_upload.png"> Upload</label>
+            </div>
+        </div>
+        <div *ngIf="certificationList.length !== 0" class="listContainer">
+            <div *ngFor="let obj of certificationList">
+                <div class="row fileNameRow" >
+                    <div class="col-10 textOverflow">
+                        {{obj}}
+                    </div>
+                    <div class="col">
+                        <div>
+                            <img class="trashIconContainer" src="../../assets/trash-solid.svg" (click)="removeCertificate(obj)">
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="row marginTop1rem" [ngClass]="courseError ? 'fieldRowError':'fieldRow' ">
+            <div class="col-8 fieldLabel" >
+                INSTITUTE/COURSE GALLERY
+            </div>
+            <div class="col">
+                <input type="file" multiple formControlName="importFile" class="impFile"  id="importCourses" (change)="onCourseChange($event)">
+                <label class="inputButton" #labelImport for="importCourses"><img src="../../assets/ic_upload.png"> Upload</label>
+            </div>
+        </div>
+        <div *ngIf="courseError" class="hasErrorText">
+            Please provide courses.
+        </div>
+        <div *ngIf="courseList.length !== 0" class="listContainer">
+            <div *ngFor="let obj of courseList">
+                <div class="row fileNameRow" >
+                    <div class="col-10 textOverflow">
+                        {{obj}}
+                    </div>
+                    <div class="col">
+                        <div>
+                            <img class="trashIconContainer" src="../../assets/trash-solid.svg" (click)="removeCourse(obj)">
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navButtons">
+        <button type="button" class="btn btn-success btnPadding" (click)="onClickNext()">Next</button>
+    </div>
+    <div class="formAlert" *ngIf="showErrorAlert">
+        <ngb-alert  type="danger" (close)="closeAlert()">Please fill the required information to proceed.
+        </ngb-alert>
+    </div>
+    <div class="formAlert" *ngIf="showSuccessAlert">
+        <ngb-alert  type="success" (close)="closeAlert()">information uploaded successfully. 
+        </ngb-alert>
+    </div>
+
+</div>
